@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101421">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="雷爪獅訓練">
+  <meta name="description" content="跟著韻東，依今天的恢復狀態完成腹肌、有氧與啞鈴訓練。">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  <link rel="icon" href="./icon-192.png">
+  <link rel="stylesheet" href="./style.css">
+  <title>雷爪獅訓練｜韻東教練</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要內容</a>
+  <div class="shell">
+    <header class="masthead"><a class="brand" href="#home"><img src="./icon-192.png" width="38" height="38" alt=""><span>雷爪獅訓練<small>和韻東一起，穩穩進步。</small></span></a><span id="connection" class="badge">檢查離線狀態</span></header>
+    <div id="storageAlert" class="notice danger" role="alert" hidden></div>
+    <div id="updateNotice" class="notice" hidden>新版已準備好。請先結束並儲存訓練，再<button id="updateBtn">更新 App</button>。</div>
+    <main id="main" tabindex="-1">
+      <section id="home" class="screen">
+        <div class="page-title"><div><p id="today" class="muted"></p><h1>今天，照狀態練。</h1></div><button id="voiceTest" class="quiet">試聽韻東</button></div>
+        <div id="resumeNotice" class="notice" hidden><span>有一堂尚未結束的訓練，已替你暫停。</span><button id="resumeBtn">回到訓練</button></div>
+        <aside class="coach"><div class="avatar" aria-label="韻東教練頭像"><span>韻東</span></div><div><h2>「姿勢顧好，剩下我來。」</h2><p id="greeting">選一套訓練。開始前先確認痠痛，我會替你調整今天的份量。</p></div><span class="coach-label">你的訓練搭檔</span></aside>
+        <div class="workout-layout"><div class="plan-column">
+          <h2 class="section-title">今天練什麼？</h2>
+          <div id="routineTabs" class="tabs" role="group" aria-label="選擇訓練"></div>
+          <article class="plan-card"><div class="plan-heading"><h2 id="routineTitle"></h2><span id="planNumber" aria-hidden="true"></span></div><p id="routineDesc"></p><p id="equipment" class="muted"></p><dl class="stats"><div><dt>預估時間</dt><dd id="minutes"></dd></div><div><dt>完整步驟</dt><dd id="stepsCount"></dd></div><div><dt>今日份量</dt><dd id="intensity"></dd></div></dl><p id="adjustment" class="plan-note"></p><button id="startBtn" class="primary">確認狀態，開始訓練</button><p class="small muted">次數動作完成後手動確認；計時與休息會自動銜接。</p></article>
+          <section class="recovery-summary"><h2>恢復也是訓練的一部分</h2><p id="lastReport">還沒有痠痛回報。完成訓練後，隔天再回來記一下。</p><button data-route="history" class="text-button">查看紀錄與回報</button></section>
+        </div><section class="flow-column"><div class="flow-heading"><h2>完整流程</h2><span class="muted small">暖身 → 訓練 → 收操</span></div><ol id="routineList" class="step-list"></ol></section></div>
+      </section>
+      <section id="workout" class="screen" hidden>
+        <div class="workbar"><button id="exitBtn" class="quiet">結束訓練</button><span id="counter" class="muted"></span><button id="wakeBtn" class="quiet">常亮：檢查中</button></div>
+        <progress id="progress" value="0" max="1" aria-label="訓練進度"></progress>
+        <div class="exercise-layout"><div class="exercise-main"><p id="phase" class="phase"></p><h1 id="exercise" tabindex="-1"></h1><p id="description"></p><div id="timerBox" class="clock" role="timer" aria-live="off">00:00</div><div id="repBox" class="reps" hidden></div><p id="coachLine" class="coach-line" role="status" aria-live="polite"></p><div class="controls"><button id="prevBtn">上一個</button><button id="mainBtn" class="primary">暫停</button><button id="skipBtn">跳過</button></div><button id="repPauseBtn" class="quiet" hidden>暫停這一組</button><p id="nextExercise" class="next-exercise"></p></div><aside class="exercise-guide"><h2>動作提醒</h2><ul id="cues"></ul><div class="coach mini-coach"><div class="avatar"><span>韻東</span></div><p>「不需要硬撐。<br>每一下穩穩做就好。」</p></div><p class="small muted">若有尖銳疼痛或動作痛，請停止。保持 App 在前景；切換 App 或鎖屏會自動暫停。</p></aside></div>
+      </section>
+      <section id="history" class="screen" hidden><div class="page-title"><div><h1>每一次，都算數。</h1><p class="muted">訓練紀錄與隔天的恢復回報。</p></div><button id="exportBtn" class="quiet">匯出備份</button></div><p id="historySummary" class="summary-line"></p><div id="historyList"></div><p class="small muted">紀錄只存在這個瀏覽器。清除網站資料或換裝置不會自動保留；請定期匯出。</p><label class="file-button">匯入備份<input id="importFile" type="file" accept="application/json,.json"></label></section>
+      <section id="settings" class="screen prose" hidden><h1>照你的習慣。</h1><h2>韻東教練</h2><p>提醒會隨暖身、動作、休息與完成狀態切換。語音使用裝置內建中文聲音。</p><div class="setting-list"><label>語音提醒<input id="voiceOn" type="checkbox" checked></label><label>提示音<input id="soundOn" type="checkbox" checked></label><label>震動提示<input id="vibeOn" type="checkbox" checked></label><label>訓練中保持螢幕常亮<input id="wakeOn" type="checkbox" checked></label></div><p id="capabilities" class="small muted"></p><button id="soundTest" class="quiet">測試聲音與震動</button><h2>你的教練頭像</h2><p>可選擇自己的圖片。只保存在本機，不會上傳到 GitHub。</p><label class="file-button">選擇圖片<input id="avatarFile" type="file" accept="image/jpeg,image/png,image/webp"></label><button id="resetAvatar" class="text-button">恢復預設</button><h2>把訓練放到主畫面</h2><ol><li>在 iPhone 的 Safari 開啟本站。</li><li>點「分享」，選擇「加入主畫面」。</li><li>從主畫面開啟，連網等到顯示「離線已備妥」後，就能離線訓練。</li></ol><button id="installBtn" class="quiet" hidden>安裝 App</button><p id="offlineStatus" class="notice">正在準備離線資源。</p><p>第一次開始訓練前，先測試聲音。iPhone 不支援網頁震動；靜音、系統設定及背景執行也可能限制聲音。螢幕常亮是否生效會顯示在訓練頁。</p><h2>DOMS 怎麼調整？</h2><p>開始前回報目前痠痛，會套用到今天選的訓練。無痠維持原份量；微痠把工作秒數／次數減至約 80%；明顯痠減至約 60%，每個動作最多一組，建議優先休息；疼痛則停止開課。暖身、休息與收操不減量。</p><p>這是保守的 App 規則，不是經臨床驗證的個人處方，也不會因為無痠痛就加重。訓練後的當下感受與隔天 DOMS 分開記錄。嚴重、持續疼痛或明顯腫脹應尋求醫療評估。</p><p class="small">參考：<a href="https://my.clevelandclinic.org/health/diseases/delayed-onset-muscle-soreness" target="_blank" rel="noreferrer">Cleveland Clinic：DOMS</a>。v3 延續 v2 的三套訓練與 App 圖示。</p></section>
+      <section id="finish" class="screen finish-screen" hidden><span class="finish-mark" aria-hidden="true">✓</span><h1 id="finishTitle">今天先到這裡。</h1><p id="finishText"></p><div class="finish-stats" id="finishStats"></div><fieldset><legend>現在的感覺</legend><div class="choice-row" id="effortChoices"><label><input type="radio" name="effort" value="輕鬆">輕鬆</label><label><input type="radio" name="effort" value="剛好" checked>剛好</label><label><input type="radio" name="effort" value="吃力">吃力</label><label><input type="radio" name="effort" value="不舒服">不舒服</label></div></fieldset><p class="muted">今天的感覺先記下；隔天再到紀錄回報痠痛。</p><button id="saveBtn" class="primary">儲存這次訓練</button></section>
+    </main>
+    <nav id="navigation" aria-label="主要導覽"><button data-route="home" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10H3Z M9 20v-7h6v7"/></svg>訓練</button><button data-route="history"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v17H5Z M8 2v4 M16 2v4 M8 10h8 M8 14h8 M8 18h5"/></svg>紀錄</button><button data-route="settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16 M4 12h16 M4 18h16 M8 3v6 M16 9v6 M10 15v6"/></svg>設定與安裝</button></nav>
+  </div>
+  <dialog id="readinessDialog"><form id="readinessForm"><button type="button" class="dialog-close" id="cancelReadiness">取消</button><h2 id="readinessTitle">現在的身體狀態？</h2><p id="readinessHint">以現在的感覺回答。今天的份量會跟著調整。</p><fieldset><legend>目前的痠痛程度</legend><div class="doms-choices"><label><input type="radio" name="doms" value="none" required><span><strong>沒有痠痛</strong><small>活動自在，維持基本份量</small></span></label><label><input type="radio" name="doms" value="mild"><span><strong>微痠</strong><small>日常動作正常，工作量約八成</small></span></label><label><input type="radio" name="doms" value="moderate"><span><strong>明顯痠痛</strong><small>優先休息；訓練減量、每動作一組</small></span></label><label><input type="radio" name="doms" value="pain"><span><strong>疼痛／動作受限</strong><small>停止訓練，不硬撐</small></span></label></div></fieldset><p id="readinessPreview" class="notice" role="status">選擇後會顯示調整內容。</p><button type="submit" id="confirmReadiness" class="primary">套用並開始</button></form></dialog>
+  <dialog id="exitDialog"><h2>這次先到這裡？</h2><p>訓練已暫停。提早結束也能儲存實際完成的部分。</p><div class="choice-row"><button id="cancelExit">回到訓練</button><button id="confirmExit" class="primary">結束並記錄</button></div></dialog>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+  <noscript>請啟用 JavaScript 才能使用訓練計時與紀錄。</noscript>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
