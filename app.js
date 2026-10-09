@@ -314,10 +314,25 @@ $('avatarFile').onchange = async event => {
   const file=event.target.files[0]; if (!file) return;
   try {
     if (!['image/jpeg','image/png','image/webp'].includes(file.type) || file.size>10_000_000) throw new Error('請選擇 10 MB 以內的 JPG、PNG 或 WebP。');
-    const bitmap=await createImageBitmap(file); const canvas=document.createElement('canvas'); canvas.width=canvas.height=256;
-    const context=canvas.getContext('2d'); const size=Math.min(bitmap.width,bitmap.height);
-    context.drawImage(bitmap,(bitmap.width-size)/2,(bitmap.height-size)/2,size,size,0,0,256,256); bitmap.close();
-    data.settings.avatar=canvas.toDataURL('image/jpeg',.86); persist(); applyAvatars(); toast('頭像已更新，只保存在本機。');
+    // FileReader + Image also work on WebKit versions with unreliable ImageBitmap decoding.
+    const source=await new Promise((resolve,reject)=>{
+      const reader=new FileReader();
+      reader.onload=()=>resolve(reader.result);
+      reader.onerror=()=>reject(new Error('圖片無法讀取，請重新選擇。'));
+      reader.readAsDataURL(file);
+    });
+    const picture=await new Promise((resolve,reject)=>{
+      const img=new Image();
+      img.onload=()=>resolve(img);
+      img.onerror=()=>reject(new Error('圖片格式無法解碼，請改用另一張 JPG 或 PNG。'));
+      img.src=source;
+    });
+    const canvas=document.createElement('canvas'); canvas.width=canvas.height=256;
+    const context=canvas.getContext('2d'); const size=Math.min(picture.naturalWidth,picture.naturalHeight);
+    context.drawImage(picture,(picture.naturalWidth-size)/2,(picture.naturalHeight-size)/2,size,size,0,0,256,256);
+    data.settings.avatar=canvas.toDataURL('image/jpeg',.86);
+    const saved=persist(); applyAvatars();
+    toast(saved?'頭像已更新，只保存在本機。':'頭像暫時更新，但本機儲存失敗，重新整理可能遺失。');
   } catch(error) { toast(error.message || '圖片無法讀取。'); }
   event.target.value='';
 };

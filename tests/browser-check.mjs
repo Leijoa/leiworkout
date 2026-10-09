@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { mkdir } from 'node:fs/promises';
+import { mkdir, readFile } from 'node:fs/promises';
 import { chromium, webkit } from 'playwright';
 
 const base = process.env.APP_URL || 'http://127.0.0.1:8765/leiworkout/';
@@ -98,7 +98,9 @@ for (const [engine,browserType] of [['chromium',chromium],['webkit',webkit]]) {
       check(last.key===key&&last.completed===last.total&&last.skipped===0,`${engine}: ${key} correct completion stored`);
     }
     await page.locator('nav [data-route=settings]').click();
-    await page.locator('#avatarFile').setInputFiles(new URL('../icon-192.png',import.meta.url).pathname.replace(/^\/([A-Za-z]:)/,'$1'));
+    // Older WebKit installations may lack ImageBitmap. Avatar loading must still work.
+    await page.evaluate(()=>{window.createImageBitmap=undefined;});
+    await page.locator('#avatarFile').setInputFiles({name:'coach.png',mimeType:'image/png',buffer:await readFile(new URL('../icon-192.png',import.meta.url))});
     try {
       await page.waitForFunction(()=>JSON.parse(localStorage.getItem('leiworkout_v3')).settings.avatar?.startsWith('data:image/jpeg'),null,{polling:100});
     } catch(error) {

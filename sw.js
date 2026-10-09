@@ -1,5 +1,5 @@
 // Bump VERSION whenever any shell file changes. Cache is scoped to this installation.
-const VERSION = 'v3.0.0';
+const VERSION = 'v3.0.1';
 const PREFIX = `leiworkout-${encodeURIComponent(self.registration.scope)}-`;
 const CACHE = PREFIX + VERSION;
 const ASSETS = ['./','./index.html','./style.css','./app.js','./core.js','./storage.js','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
