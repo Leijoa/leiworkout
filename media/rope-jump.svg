@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" role="img" aria-labelledby="title desc">
+  <title id="title">無繩跳繩兩階段示意圖</title><desc id="desc">雙手在身體兩側做小圓圈，輕輕低跳；前腳掌落地、膝蓋保持柔軟。不能跳時可改成原地踏步。</desc>
+  <defs><marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 9 4.5 0 9Z" fill="#6d48c7"/></marker><style>.p{fill:#fff;stroke:#dcd8e9;stroke-width:2}.f{stroke:#aaa5b8;stroke-width:3}.b{fill:none;stroke:#0f4c3a;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}.a{fill:none;stroke:#6d48c7;stroke-width:4;marker-end:url(#a)}.h{font:700 20px system-ui,"Noto Sans TC";fill:#25342f}.n{font:600 16px system-ui,"Noto Sans TC";fill:#5b5667}.s{font:600 14px system-ui,"Noto Sans TC";fill:#6d48c7}</style></defs>
+  <rect width="800" height="360" rx="24" fill="#f7f5fb"/><rect class="p" x="22" y="48" width="368" height="286" rx="18"/><rect class="p" x="410" y="48" width="368" height="286" rx="18"/>
+  <text class="h" x="44" y="79">階段 1｜輕輕低跳</text><text class="n" x="44" y="105">腳離地一點，雙手在兩側畫小圓</text><line class="f" x1="48" y1="294" x2="364" y2="294"/>
+  <circle cx="204" cy="139" r="23" fill="#0f4c3a"/><path class="b" d="M204 166 L204 225 M201 183 L158 226 M207 183 L250 226 M204 224 L181 270 L174 278 M204 224 L227 270 L234 278"/><path class="a" d="M145 208 Q126 232 151 251 Q174 257 180 233"/><path class="a" d="M263 208 Q282 232 257 251 Q234 257 228 233"/><text class="s" x="80" y="320">低、輕、安靜，不追求高度</text>
+  <text class="h" x="432" y="79">階段 2｜柔軟落地</text><text class="n" x="432" y="105">前腳掌先落，膝蓋微彎吸收衝擊</text><line class="f" x1="436" y1="294" x2="752" y2="294"/>
+  <circle cx="594" cy="147" r="23" fill="#0f4c3a"/><path class="b" d="M594 174 L594 229 M591 190 L552 233 M597 190 L636 233 M594 228 L565 260 L550 287 M594 228 L623 260 L638 287"/><path class="a" d="M534 250 Q548 236 564 235"/><path class="a" d="M654 250 Q640 236 624 235"/><text class="s" x="446" y="320">不適合跳時，改做原地踏步</text>
+</svg>

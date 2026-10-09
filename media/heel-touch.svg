@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" role="img" aria-labelledby="title desc">
+  <title id="title">腳跟觸碰兩步動作示意圖</title>
+  <desc id="desc">俯視示意。仰躺屈膝，雙腳掌踩地，肩膀微微抬起。腹部側彎讓左手滑向左腳跟，再讓右手滑向右腳跟，雙腳始終留在地面。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 9 4.5 0 9Z" fill="#6d48c7"/></marker>
+    <style>
+      .panel{fill:#fff;stroke:#dcd8e9;stroke-width:2}.body{fill:#dfeee8;stroke:#0f4c3a;stroke-width:5}.limb{fill:none;stroke:#0f4c3a;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}.accent{fill:none;stroke:#6d48c7;stroke-width:14;stroke-linecap:round;stroke-linejoin:round}.foot{fill:#0f4c3a}.arrow{fill:none;stroke:#6d48c7;stroke-width:4;stroke-linecap:round;marker-end:url(#arrow)}.label{font:700 20px system-ui,"Noto Sans TC",sans-serif;fill:#25342f}.note{font:600 16px system-ui,"Noto Sans TC",sans-serif;fill:#5b5667}.small{font:600 14px system-ui,"Noto Sans TC",sans-serif;fill:#6d48c7}
+    </style>
+  </defs>
+  <rect width="800" height="360" rx="24" fill="#f7f5fb"/>
+  <rect class="panel" x="22" y="48" width="368" height="286" rx="18"/>
+  <rect class="panel" x="410" y="48" width="368" height="286" rx="18"/>
+  <text class="label" x="44" y="79">步驟 1｜仰躺準備（俯視）</text>
+  <text class="note" x="44" y="105">屈膝、腳掌踩地，肩膀微抬</text>
+  <circle cx="206" cy="140" r="24" fill="#0f4c3a"/>
+  <path class="body" d="M171 168 Q206 155 241 168 L252 231 Q206 249 160 231Z"/>
+  <path class="limb" d="M174 181 L132 222 L117 266"/>
+  <path class="limb" d="M238 181 L280 222 L295 266"/>
+  <path class="limb" d="M182 237 L150 266 L150 296"/>
+  <path class="limb" d="M230 237 L262 266 L262 296"/>
+  <ellipse class="foot" cx="150" cy="305" rx="22" ry="10"/>
+  <ellipse class="foot" cx="262" cy="305" rx="22" ry="10"/>
+  <path class="arrow" d="M202 187 Q166 188 135 222"/>
+  <path class="arrow" d="M210 187 Q246 188 277 222"/>
+  <text class="small" x="58" y="322">雙腳全程踩地</text>
+  <text class="small" x="226" y="322">左右交替側彎</text>
+
+  <text class="label" x="432" y="79">步驟 2｜摸同側腳跟</text>
+  <text class="note" x="432" y="105">左手滑向左腳跟，再換右側</text>
+  <circle cx="574" cy="140" r="24" fill="#0f4c3a"/>
+  <path class="body" d="M535 167 Q570 153 605 173 L616 236 Q570 249 524 226Z"/>
+  <path class="accent" d="M541 180 Q499 216 492 290"/>
+  <path class="limb" d="M601 185 L650 224 L664 267"/>
+  <path class="limb" d="M545 234 L512 264 L512 296"/>
+  <path class="limb" d="M593 239 L625 267 L625 296"/>
+  <ellipse class="foot" cx="512" cy="305" rx="22" ry="10"/>
+  <ellipse class="foot" cx="625" cy="305" rx="22" ry="10"/>
+  <circle cx="492" cy="290" r="8" fill="#6d48c7"/>
+  <path class="arrow" d="M584 206 Q545 216 504 275"/>
+  <text class="small" x="436" y="322">左手 → 左腳跟</text>
+  <text class="small" x="588" y="322">回中間後換右側</text>
+</svg>

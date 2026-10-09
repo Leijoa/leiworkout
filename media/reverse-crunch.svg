@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" role="img" aria-labelledby="title desc">
+  <title id="title">反向捲腹兩步動作示意圖</title>
+  <desc id="desc">側面示意。第一步仰躺，雙腿併攏，髖與膝約九十度。第二步用腹部捲動骨盆，使尾骨稍微離地、膝蓋靠近胸口，避免用腿甩動。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 9 4.5 0 9Z" fill="#6d48c7"/></marker>
+    <style>
+      .panel{fill:#fff;stroke:#dcd8e9;stroke-width:2}.floor{stroke:#a9a4b8;stroke-width:3}.body{fill:none;stroke:#0f4c3a;stroke-width:21;stroke-linecap:round;stroke-linejoin:round}.far{fill:none;stroke:#6d48c7;stroke-width:15;stroke-linecap:round;stroke-linejoin:round}.arm{fill:none;stroke:#0f4c3a;stroke-width:12;stroke-linecap:round}.arrow{fill:none;stroke:#6d48c7;stroke-width:4;stroke-linecap:round;marker-end:url(#arrow)}.label{font:700 20px system-ui,"Noto Sans TC",sans-serif;fill:#25342f}.note{font:600 16px system-ui,"Noto Sans TC",sans-serif;fill:#5b5667}.small{font:600 14px system-ui,"Noto Sans TC",sans-serif;fill:#6d48c7}
+    </style>
+  </defs>
+  <rect width="800" height="360" rx="24" fill="#f7f5fb"/>
+  <rect class="panel" x="22" y="48" width="368" height="286" rx="18"/>
+  <rect class="panel" x="410" y="48" width="368" height="286" rx="18"/>
+  <text class="label" x="44" y="79">步驟 1｜屈膝準備（側視）</text>
+  <text class="note" x="44" y="105">雙腿併攏，髖膝約 90°</text>
+  <line class="floor" x1="48" y1="291" x2="364" y2="291"/>
+  <circle cx="89" cy="258" r="23" fill="#0f4c3a"/>
+  <path class="body" d="M112 269 L219 274"/>
+  <path class="arm" d="M141 273 L202 287"/>
+  <path class="far" d="M205 273 L220 200 L292 200"/>
+  <path class="body" d="M219 273 L235 192 L308 192"/>
+  <circle cx="235" cy="192" r="10" fill="#0f4c3a"/>
+  <circle cx="220" cy="200" r="8" fill="#6d48c7"/>
+  <text class="small" x="218" y="168">小腿平行地面</text>
+  <text class="small" x="91" y="321">肩頸放鬆・手掌壓地</text>
+
+  <text class="label" x="432" y="79">步驟 2｜骨盆捲起</text>
+  <text class="note" x="432" y="105">尾骨微離地，膝蓋靠近胸口</text>
+  <line class="floor" x1="436" y1="291" x2="752" y2="291"/>
+  <circle cx="480" cy="258" r="23" fill="#0f4c3a"/>
+  <path class="body" d="M503 269 Q562 273 596 244"/>
+  <path class="arm" d="M530 273 L592 288"/>
+  <path class="far" d="M584 244 Q603 199 645 177 L695 214"/>
+  <path class="body" d="M596 244 Q618 193 659 169 L711 208"/>
+  <circle cx="659" cy="169" r="10" fill="#0f4c3a"/>
+  <circle cx="645" cy="177" r="8" fill="#6d48c7"/>
+  <path class="arrow" d="M579 272 Q615 268 631 232"/>
+  <text class="small" x="438" y="321">腹部帶動骨盆，不甩腿</text>
+  <text class="small" x="630" y="321">抬起幅度小即可</text>
+</svg>

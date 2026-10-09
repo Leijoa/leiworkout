@@ -1,5 +1,6 @@
 import { routines, buildPlan, Timer } from './core.js';
 import { loadData, saveData, validateData, mergeData } from './storage.js';
+import { guideForStep } from './guides.js';
 
 const $ = id => document.getElementById(id);
 const all = query => [...document.querySelectorAll(query)];
@@ -15,6 +16,50 @@ let selected = 'abs', session = null, screen = 'home', readinessMode = 'start', 
 let repRunning = false, accountAt = performance.now(), lastSnapshot = 0, toastTimer;
 let audio = null, wake = null, wakePending = false, waitingWorker = null, deferredInstall = null;
 let offlineReady = false;
+let openedGuide = null;
+const mediaCredits = fetch('./media/credits.json').then(r => { if (!r.ok) throw new Error('credits'); return r.json(); }).catch(() => []);
+function guideImages(guide, zoom = false) {
+  return guide.images.map(img => `<figure><img src="${img.src}" alt="${escapeHTML(img.alt)}"><figcaption>${escapeHTML(img.caption)}${zoom?` · <a href="${img.src}" target="_blank" rel="noopener" aria-label="放大${escapeHTML(img.alt)}">放大附圖 ↗</a>`:''}</figcaption></figure>`).join('');
+}
+function openGuide(step) {
+  const guide=guideForStep(step); if (!guide) return;
+  if (session && !session.finished) pause('示範已開啟，訓練暫停。關閉後按繼續。');
+  openedGuide=guide;
+  $('guideTitle').textContent=guide.title;
+  $('guideImages').innerHTML=guideImages(guide,true);
+  $('guideSteps').innerHTML=guide.how.map(text=>`<li>${escapeHTML(text)}</li>`).join('');
+  $('guideCaution').textContent=guide.caution;
+  $('guidePaused').hidden=!(session && !session.finished);
+  $('guideVideo').replaceChildren();
+  const videos=[guide.video,...(guide.extraVideos || [])].filter(Boolean);
+  $('guideVideoButtons').innerHTML=videos.map((film,i)=>`<button class="quiet" data-guide-video="${i}">播放影片 · ${escapeHTML(film.creator)}</button> <a href="${film.url}" target="_blank" rel="noopener noreferrer">在 YouTube 開啟 ↗</a>`).join('<br>');
+  $('guideCredits').textContent='原創示意圖：雷爪獅訓練；照片／插圖來源載入中。';
+  mediaCredits.then(credits=>{
+    if (openedGuide!==guide) return;
+    const matches=credits.filter(credit=>guide.images.some(img=>img.src===`./${credit.file}`));
+    $('guideCredits').innerHTML=matches.length ? matches.map(c=>`<a href="${escapeHTML(c.source)}" target="_blank" rel="noopener noreferrer">${escapeHTML(c.author || 'wger 貢獻者')}</a> · <a href="${escapeHTML(c.licenseURL)}" target="_blank" rel="noopener noreferrer">${escapeHTML(c.license)}</a>`).join('；')+'；圖片未修改，僅依版面縮放。' : '原創動作示意圖：雷爪獅訓練。';
+  });
+  $('guideDialog').showModal();
+}
+$('closeGuide').onclick=()=> $('guideDialog').close();
+$('guideDialog').addEventListener('close',()=>{ $('guideVideo').replaceChildren(); openedGuide=null; });
+$('guideVideoButtons').onclick=event=>{
+  const button=event.target.closest('[data-guide-video]'); if (!button || !openedGuide) return;
+  if (!navigator.onLine) { toast('影片需要網路；附圖和分步說明仍可離線查看。'); return; }
+  const film=[openedGuide.video,...(openedGuide.extraVideos || [])].filter(Boolean)[Number(button.dataset.guideVideo)];
+  if (!film) return;
+  const iframe=document.createElement('iframe');
+  iframe.src=`https://www.youtube-nocookie.com/embed/${film.id}?rel=0`;
+  iframe.title=`${openedGuide.title}示範 · ${film.creator}`;
+  iframe.allow='encrypted-media; fullscreen; picture-in-picture'; iframe.allowFullscreen=true;
+  iframe.referrerPolicy='strict-origin-when-cross-origin';
+  $('guideVideo').replaceChildren(iframe);
+};
+document.addEventListener('click',event=>{
+  const button=event.target.closest('[data-guide-step]');
+  if (button) openGuide(routines[selected].steps.find(s=>s.id===button.dataset.guideStep));
+});
+$('currentGuideBtn').onclick=()=>{if(session)openGuide(session.plan.steps[session.index]);};
 
 function toast(message) {
   $('toast').textContent = message; $('toast').hidden = false;
@@ -72,7 +117,7 @@ function renderHome() {
   $('stepsCount').textContent = plan.steps.length;
   $('intensity').textContent = {none:'基本',mild:'減量',moderate:'輕量',pain:'暫停'}[effectiveLevel()];
   $('adjustment').textContent = plan.adjustment;
-  $('routineList').innerHTML = plan.blocked ? '<li><div><strong>今天先恢復</strong><small>目前有疼痛回報。開始前重新確認身體狀態。</small></div></li>' : plan.steps.map(s => `<li class="${['休息','恢復'].includes(s.p)?'rest':''}"><div><strong>${escapeHTML(s.n)}</strong><small>${escapeHTML(s.p)} · ${escapeHTML(s.d)}</small></div><span class="dose">${escapeHTML(dose(s))}</span></li>`).join('');
+  $('routineList').innerHTML = plan.blocked ? '<li><div><strong>今天先恢復</strong><small>目前有疼痛回報。開始前重新確認身體狀態。</small></div></li>' : plan.steps.map(s => `<li class="${['休息','恢復'].includes(s.p)?'rest':''}"><div><strong>${escapeHTML(s.n)}</strong><small>${escapeHTML(s.p)} · ${escapeHTML(s.d)}</small>${guideForStep(s)?`<button class="text-button movement-link" data-guide-step="${s.id}" aria-label="查看${escapeHTML(s.n)}的附圖與影片">附圖與影片 ↗</button>`:''}</div><span class="dose">${escapeHTML(dose(s))}</span></li>`).join('');
   const last = currentReport();
   $('lastReport').textContent = last ? `${dateLabel(last.date)} 回報：${domsNames[last.level]}。每次開始前都會重新確認，不把舊回報當成今天的狀態。` : '還沒有痠痛回報。完成訓練後，隔天再回來記一下。';
   $('resumeNotice').hidden = !session;
@@ -158,6 +203,10 @@ function enterStep(auto = true, restoredRemaining = null) {
   $('phase').textContent = step.p;
   $('exercise').textContent = step.n;
   $('description').textContent = step.d;
+  const guide=guideForStep(step);
+  $('currentGuide').hidden=!guide;
+  $('currentGuideImages').innerHTML=guide?guideImages({...guide,images:guide.images.slice(0,1)}):'';
+  $('currentGuideBtn').textContent='看完整附圖與影片（會暫停）';
   $('cues').innerHTML = step.c.map(c => `<li>${escapeHTML(c)}</li>`).join('');
   $('timerBox').hidden = !step.s; $('repBox').hidden = !!step.s;
   $('repPauseBtn').hidden = !!step.s;
@@ -353,7 +402,7 @@ if ('serviceWorker' in navigator && location.protocol!=='file:') {
     offerUpdate();
     registration.addEventListener('updatefound',()=>{const worker=registration.installing;worker?.addEventListener('statechange',()=>{if(worker.state==='installed'&&navigator.serviceWorker.controller)offerUpdate();});});
     return navigator.serviceWorker.ready;
-  }).then(()=>{offlineReady=true;updateConnection();$('offlineStatus').textContent='離線資源已備妥。連網開啟一次後，三套訓練、計時與紀錄可離線使用。語音是否可離線取決於裝置已安裝的聲音。';}).catch(()=>{$('offlineStatus').textContent='離線準備失敗，請保持連線並重新整理。PWA 需要 HTTPS 或 localhost。';});
+  }).then(()=>{offlineReady=true;updateConnection();$('offlineStatus').textContent='離線資源已備妥。連網開啟一次後，三套訓練、附圖、中文說明、計時與紀錄可離線使用；影片需連網。語音是否可離線取決於裝置已安裝的聲音。';}).catch(()=>{$('offlineStatus').textContent='離線準備失敗，請保持連線並重新整理。PWA 需要 HTTPS 或 localhost。';});
 } else $('offlineStatus').textContent='此環境無法啟用離線。請使用 HTTPS 網址或本機 localhost 開啟。';
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&session&&!session.finished)pause('已因切換 App 或鎖屏暫停。回來後按繼續。');});
 window.addEventListener('pagehide',()=>{if(session&&!session.finished)pause();});

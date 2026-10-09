@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" role="img" aria-labelledby="title desc">
+  <title id="title">原地踏步兩步示意圖</title><desc id="desc">站直後左右膝交替抬起，手臂自然前後擺動；每次都有一腳踩地，不需要跳躍。</desc>
+  <defs><marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 9 4.5 0 9Z" fill="#6d48c7"/></marker><style>.p{fill:#fff;stroke:#dcd8e9;stroke-width:2}.f{stroke:#aaa5b8;stroke-width:3}.b{fill:none;stroke:#0f4c3a;stroke-width:19;stroke-linecap:round;stroke-linejoin:round}.v{fill:none;stroke:#6d48c7;stroke-width:14;stroke-linecap:round}.a{fill:none;stroke:#6d48c7;stroke-width:4;marker-end:url(#a)}.h{font:700 20px system-ui,"Noto Sans TC";fill:#25342f}.n{font:600 16px system-ui,"Noto Sans TC";fill:#5b5667}.s{font:600 14px system-ui,"Noto Sans TC";fill:#6d48c7}</style></defs>
+  <rect width="800" height="360" rx="24" fill="#f7f5fb"/><rect class="p" x="22" y="48" width="368" height="286" rx="18"/><rect class="p" x="410" y="48" width="368" height="286" rx="18"/>
+  <text class="h" x="44" y="79">步驟 1｜抬左膝</text><text class="n" x="44" y="105">右腳踩穩，手臂自然擺動</text><line class="f" x1="48" y1="294" x2="364" y2="294"/>
+  <circle cx="204" cy="139" r="23" fill="#0f4c3a"/><path class="b" d="M204 166 L204 226 M201 184 L158 222 M207 184 L246 216 M204 225 L166 249 L151 286 M204 225 L235 286"/><path class="a" d="M149 241 Q160 224 177 213"/><text class="s" x="63" y="320">一腳始終踩地・不跳</text>
+  <text class="h" x="432" y="79">步驟 2｜換抬右膝</text><text class="n" x="432" y="105">左腳踩穩，左右平順交替</text><line class="f" x1="436" y1="294" x2="752" y2="294"/>
+  <circle cx="594" cy="139" r="23" fill="#0f4c3a"/><path class="b" d="M594 166 L594 226 M591 184 L552 216 M597 184 L640 222 M594 225 L563 286 M594 225 L632 249 L647 286"/><path class="a" d="M658 241 Q647 224 630 213"/><text class="s" x="448" y="320">抬到舒服高度即可</text>
+</svg>

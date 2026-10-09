@@ -1,0 +1,74 @@
+[
+  {
+    "file": "media/cat.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Yoga_at_Your_Park_-_Bidalasana.jpg",
+    "author": "Mary O'Neill",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Yoga_at_Your_Park_-_Bidalasana.jpg",
+    "bytes": 989145,
+    "licenseURL": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  {
+    "file": "media/cow.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/b/be/Yoga_at_Your_Park_-_Bitilasana.jpg",
+    "author": "Mary O'Neill",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Yoga_at_Your_Park_-_Bitilasana.jpg",
+    "bytes": 762705,
+    "licenseURL": "https://creativecommons.org/publicdomain/mark/1.0/"
+  },
+  {
+    "file": "media/child-pose.jpg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/55/Hatha_yoga_child_pose.jpg",
+    "author": "Daniel Case",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Hatha_yoga_child_pose.jpg",
+    "bytes": 1239312,
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/3.0/"
+  },
+  {
+    "file": "media/plank.png",
+    "url": "https://wger.de/media/exercise-images/458/b7bd9c28-9f1d-4647-bd17-ab6a3adf5770.png",
+    "author": "utkb",
+    "license": "CC BY-SA 4.0",
+    "source": "https://wger.de/en/exercise/458/view/",
+    "bytes": 239054,
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+    "file": "media/dumbbell-row.png",
+    "url": "https://wger.de/media/exercise-images/81/a751a438-ae2d-4751-8d61-cef0e9292174.png",
+    "author": "Franpol",
+    "license": "CC BY-SA 4.0",
+    "source": "https://wger.de/en/exercise/81/view/",
+    "bytes": 27846,
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+    "file": "media/rdl.webp",
+    "url": "https://wger.de/media/exercise-images/1652/0306c8c0-70cc-45d4-92de-6fa72ceaa834.webp",
+    "author": "AlucardEvil40",
+    "license": "CC BY-SA 4.0",
+    "source": "https://wger.de/en/exercise/1652/view/",
+    "bytes": 33644,
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+    "file": "media/calf-stretch.jpg",
+    "url": "https://wger.de/media/exercise-images/1239/5026373a-a7b4-4e26-a0aa-c46634205196.jpg",
+    "author": "erikocobra / MD Anderson Focused on Health",
+    "license": "CC BY-SA 4.0",
+    "source": "https://wger.de/en/exercise/1239/view/",
+    "bytes": 13053,
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+    "file": "media/quad-stretch.png",
+    "url": "https://wger.de/media/exercise-images/1873/c0ed299b-6d87-4d90-885d-bb3b5d85f1eb.png",
+    "author": "Davidgj32",
+    "license": "CC BY-SA 4.0",
+    "source": "https://wger.de/en/exercise/1873/view/",
+    "bytes": 587763,
+    "licenseURL": "https://creativecommons.org/licenses/by-sa/4.0/"
+  }
+]
